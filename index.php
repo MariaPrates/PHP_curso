@@ -21,4 +21,4 @@ else if($idade >= 13 && $idade <= 18){
 else if($idade >= 18){
   echo "Adulto";
 }
-?>
+
