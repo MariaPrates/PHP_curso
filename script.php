@@ -4,10 +4,10 @@ $categorias = [];
 $categorias[] = "infantil";
 $categorias[] = "adolescente";
 $categorias[] = "adulto";
-$categorias[] = "Terceira idade";
+$categorias[] = "terceira_idade";
 
-$nome = $_POST['$nome'];
-$idade = $_POST['$idade'];
+$nome = $_POST['nome'];
+$idade = $_POST['idade'];
 
 //Indica que o nome não pode ser vazio
 if(empty($nome)){
@@ -22,7 +22,7 @@ if (strlen ($nome) < 3){
 }
 
 //Indica que o nome não pode passar de 40 entre letras e espaços
-if (strlen($nome) < 40){
+if (strlen($nome) >= 40){
     echo "Nome muito extenso";
     return;
 }
@@ -35,10 +35,7 @@ if (!is_numeric($idade)){
 
 //Para a categoria INFANTIL o candidato deve ter entre 6 à 12 anos
 if($idade >= 6 && $idade <= 12){
-    for ($i=0; $i <= count($categorias); $i++){
-        if ($categorias[$i] == 'infantil')
-            echo "O nadador " .$nome. " compete na " .$categorias[$i];
-    }
+          echo "O nadador " .$nome. " compete na " .$categorias[];
 }
 
 //Para a categoria ADOLESCENTE o candidato deve ter entre 13 à 18 anos
