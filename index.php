@@ -1,5 +1,5 @@
 <?php
-session_start
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -12,10 +12,17 @@ session_start
 <body>
 <h4 class="title">Formulário de Inscrição para Candidatos! </h4>
 <form action="script.php" method="POST">
-    <fieldset>
 
-        <legend>Informações</legend>
-        <p>
+   
+    <fieldset>
+        <legend>Formulário</legend>
+        
+        <?php $mensagemDeErro = isset($_SESSION['mensagem_de_erro']) ? $_SESSION['mensagem_de_erro'] : '';
+            if (!empty($mensagemDeErro)) {
+                echo $mensagemDeErro;
+            }
+        ?>
+        <p>     
             <label for="nome">Nome completo: <em class="required">(obrigatório)</em></label>
             <input name="nome" id="nome" type="text" />
         </p>
