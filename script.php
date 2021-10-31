@@ -1,18 +1,19 @@
 <?php
 
+session_start();
+
 $categorias = [];
 $categorias[] = "infantil";
 $categorias[] = "adolescente";
 $categorias[] = "adulto";
-$categorias[] = "terceira_idade";
+$categorias[] = "Terceira idade";
 
 $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
 //Indica que o nome não pode ser vazio
-if(empty($nome)){
-    echo "O nome não pode ser vazio";
-    return;
+if(empty($nome)){ 
+   $_SESSION['mensagem_de_erro'] = 'O nome não pode vazio';
 }
 
 //Indica que o nome tem que ter mais de 3 entre letras e espaços
@@ -35,7 +36,10 @@ if (!is_numeric($idade)){
 
 //Para a categoria INFANTIL o candidato deve ter entre 6 à 12 anos
 if($idade >= 6 && $idade <= 12){
-          echo "O nadador " .$nome. " compete na " .$categorias[];
+    for ($i=0; $i <= count($categorias); $i++){
+        if ($categorias[$i] == 'infantil')
+            echo "O nadador " .$nome. " compete na " .$categorias[$i];
+    }
 }
 
 //Para a categoria ADOLESCENTE o candidato deve ter entre 13 à 18 anos
