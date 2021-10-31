@@ -17,7 +17,13 @@ session_start();
     <fieldset>
         <legend>Formulário</legend>
         
-        <?php $mensagemDeErro = isset($_SESSION['mensagem_de_erro']) ? $_SESSION['mensagem_de_erro'] : '';
+        <?php 
+
+        $mensagemDeSucesso = isset($_SESSION['mensagem_de_sucesso']) ? $_SESSION['mensagem_de_sucesso'] : '';
+         if (!empty($mensagemDeSucesso)) {
+                echo $mensagemDeSucesso;
+            }
+        $mensagemDeErro = isset($_SESSION['mensagem_de_erro']) ? $_SESSION['mensagem_de_erro'] : '';
             if (!empty($mensagemDeErro)) {
                 echo $mensagemDeErro;
             }
