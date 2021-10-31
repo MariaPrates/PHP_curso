@@ -13,25 +13,26 @@ $idade = $_POST['idade'];
 
 //Indica que o nome não pode ser vazio
 if(empty($nome)){ 
-   $_SESSION['mensagem_de_erro'] = 'O nome não pode vazio';
+   $_SESSION['mensagem_de_erro'] = 'O nome não pode ser vazio, por favor digite-o novamente!';
+   header('location: index.php');
 }
 
 //Indica que o nome tem que ter mais de 3 entre letras e espaços
 if (strlen ($nome) < 3){
-    echo "Deve conter mais de 3 caracteres";
-    return;
+    $_SESSION['mensagem_de_erro'] = 'O nome tem que ter mais de 3 caracteres, por favor, digite-o novamente!';
+    header('location: index.php');
 }
 
 //Indica que o nome não pode passar de 40 entre letras e espaços
 if (strlen($nome) >= 40){
-    echo "Nome muito extenso";
-    return;
+   $_SESSION['mensagem_de_erro'] = 'O nome não pode passar de 40 caracteres, por favor, digite-o novamente!';
+    header('location: index.php');
 }
 
 //Indica que a idade tem que ser números
 if (!is_numeric($idade)){
-    echo "Informe a idade";
-    return;
+   $_SESSION['mensagem_de_erro'] = 'Informe um número para a idade, por favor, digite-o novamente!';
+    header('location: index.php');
 }
 
 //Para a categoria INFANTIL o candidato deve ter entre 6 à 12 anos
