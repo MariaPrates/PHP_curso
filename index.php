@@ -1,49 +1,40 @@
 <?php
-session_start();
+include "servicos/servicoMensagemSession.php";
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <title>Inscrições!</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8">
+    <title>Formulário de inscrição</title>
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
-<h4 class="title">Formulário de Inscrição para Candidatos! </h4>
-<form action="script.php" method="POST">
 
-   
-    <fieldset>
-        <legend>Formulário</legend>
-        
-        <?php 
+<p>FORMULÁRIO PARA INSCRIÇÃO DE COMPETIDORES</p>
 
-        $mensagemDeSucesso = isset($_SESSION['mensagem_de_sucesso']) ? $_SESSION['mensagem_de_sucesso'] : '';
-         if (!empty($mensagemDeSucesso)) {
-                echo $mensagemDeSucesso;
-            }
-        $mensagemDeErro = isset($_SESSION['mensagem_de_erro']) ? $_SESSION['mensagem_de_erro'] : '';
-            if (!empty($mensagemDeErro)) {
-                echo $mensagemDeErro;
-            }
-        ?>
-        <p>     
-            <label for="nome">Nome completo: <em class="required">(obrigatório)</em></label>
-            <input name="nome" id="nome" type="text" />
-        </p>
+<form action="script.php" method="post">
+    <?php
+        $mensagemDeSucesso = obterMensagemSucesso();
+        if(!empty($mensagemDeSucesso))
+        {
+            echo $mensagemDeSucesso;
+        }
 
-        <p>
-            <label for="idade">Idade:</label>
-            <input name="idade" id="idade" type="text"/>
-        </p>
-
-    </fieldset>
-
-    <p>
-        <input type="submit" value="Enviar dados" id="enviar"/>
-    </p>
-
+        $mensagemDeErro = obterMensagemErro();
+        if(!empty($mensagemDeErro))
+        {
+            echo $mensagemDeErro;
+        }
+    ?>
+    <p>Seu nome: <input type="text" name="nome" /></p>
+    <p>Sua idade: <input type="text" name="idade" /></p>
+    <p><input type="submit" value="Enviar dados do competidor"/></p>
 </form>
+
 </body>
+
 </html>

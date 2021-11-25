@@ -1,44 +1,40 @@
 <?php
-
 session_start();
 
- function setarMensagemSucesso(string $mensagem) : void 
- {
- 	$_SESSION['mensagem_de_sucesso'] = $mensagem;
- } 
-
- function obterMensagemSucesso() : ?string
- {
- 	if(isset($_SESSION['mensagem_de_sucesso']))
- 		return $_SESSION['mensagem_de_sucesso'];
-
- 	return null;	
- }
-
- function setarMensagemErro(string $mensagem) : void 
- {
- 	$_SESSION['mensagem_de_erro'] = $mensagem;
- } 
-
- function obterMensagemErro() : ?string
- {
- 	if(isset($_SESSION['mensagem_de_erro']))
- 		return $_SESSION['mensagem_de_erro'];
-
- 	return null;	
- }
-
-function removerMEnsagemSucesso() : void
+function setarMensagemSucesso(string $mensagem) 
 {
-	if(isset($_SESSION['mensagem_de_sucesso']))
- 		unset($_SESSION['mensagem_de_sucesso']);
+    $_SESSION['mensagem-de-sucesso'] = $mensagem;
 }
 
-
-function removerMensagemErro() : void
+function obterMensagemSucesso() 
 {
-	if(isset($_SESSION['mensagem_de_erro']))
- 		unset($_SESSION['mensagem_de_erro']);
+    if(isset($_SESSION['mensagem-de-sucesso']))
+        return $_SESSION['mensagem-de-sucesso'];
+
+    return null;
 }
 
-?>
+function setarMensagemErro(string $mensagem)
+{
+    $_SESSION['mensagem-de-erro'] = $mensagem;
+}
+
+function obterMensagemErro()
+{
+    if(isset($_SESSION['mensagem-de-erro']))
+        return $_SESSION['mensagem-de-erro'];
+
+    return null;
+}
+
+function removerMensagemSucesso() 
+{
+    if(isset($_SESSION['mensagem-de-sucesso']))
+        unset($_SESSION['mensagem-de-sucesso']);
+}
+
+function removerMensagemErro() 
+{
+    if(isset($_SESSION['mensagem-de-erro']))
+        unset($_SESSION['mensagem-de-erro']);
+}

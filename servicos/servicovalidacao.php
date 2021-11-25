@@ -1,39 +1,31 @@
 <?php
 
-function validaNome(string $nome) : bool 
+function validaNome(string $nome)
 {
-	   //Indica que o nome não pode ser vazio
-  if(empty($nome)){ 
-   setarMensagemErro(mensagem: 'O nome não pode ser vazio, por favor digite-o novamente!');
-    return false;
-  }
-
-      //Indica que o nome tem que ter mais de 3 entre letras e espaços
-  else if (strlen ($nome) < 3){
-    setarMensagemErro(mensagem: 'O nome tem que ter mais de 3 caracteres, por favor, digite-o novamente!');
-    header('location: index.php');
-    return false;
-  }
-
-      //Indica que o nome não pode passar de 40 entre letras e espaços
-  else if (strlen($nome) >= 40){
-   setarMensagemErro(mensagem: 'O nome não pode passar de 40 caracteres, por favor, digite-o novamente!');
-    header('location: index.php');
-    return false;
-  }
-  return true;
+    if(empty($nome))
+    {
+        setarMensagemErro('O nome não pode ser vazio, por favor preencha-o novamente');
+        return false;
+    }
+    else if(strlen($nome) < 3)
+    {
+        setarMensagemErro('O nome não pode conter menos de 3 caracteres');
+        return false;
+    }
+    else if(strlen($nome) > 40)
+    {
+        setarMensagemErro('O nome não pode conter mais de 40 caracteres');
+        return false;
+    }
+    return true;
 }
-
-function validaIdade(string $idade) : bool
+function validaIdade(string $idade)
 {
-  
-      //Indica que a idade tem que ser números
-  if (!is_numeric($idade)){
-    setarMensagemErro(mensagem: 'Informe um número para a idade, por favor, digite-o novamente!');
-      return false;
-  }
-  return true;
 
+    if(!is_numeric($idade))
+    {
+        setarMensagemErro('Informe um número para idade');
+        return false;
+    }
+    return true;
 }
-
-?>
